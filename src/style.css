@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+* {
+  font-size: calc(0.5vw + 10px);
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+body {
+  height: 100vh;
+  background-color: hsl(240, 78%, 98%);
+  background-image: url('./bg-bottom.svg'), url('./bg-top.svg');
+  background-size: 30vw;
+  background-repeat: no-repeat;
+  background-position: bottom left, top right;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 10vw;
+  gap: 50px;
+}
+.main-title {
+  font-size: 28px;
+}
+.plans-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  perspective: 1500px;
+}
+.monthly.plan-card {
+  animation: monthrotate 0.3s;
+}
+@keyframes monthrotate {
+  0% {
+    transform: translateY(0deg);
+  }
+  100% {
+    transform: translateY(360deg);
+  }
+}
+.yearly.plan-card {
+  transform: rotateY(-360deg);
+}
+.plan-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 3vw 5vw;
+  display: flex;
+  gap: calc(2vw + 7px);
+  flex-direction: column;
+  align-items: center;
+  max-height: 1000px;
+  backface-visibility: hidden;
+  transition: 0.3s ease-in-out;
+  --b: hsl(240, 20%, 89%);
+}
+.plan-card:nth-child(1) {
+  border-radius: 10px 0 0 10px;
+}
+.plan-card:nth-child(2) {
+  background: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  padding: 4vw 5vw;
+  box-shadow: none;
+  z-index: 2;
+}
+.plan-card * {
+  color: hsl(232, 13%, 33%);
+}
+.plan-card:nth-child(2) * {
+  color: hsl(240, 78%, 98%);
+  --b: hsl(234, 14%, 74%);
+}
+.plan-card:nth-child(3) {
+  border-radius: 0 10px 10px 0;
+}
+.plan-title {
+  font-size: 1.8vw;
+  text-transform: capitalize;
+  color: hsl(233, 13%, 49%);
+}
+.plan-price {
+  font-size: calc(5vw + 8px);
+}
+.plan-price::first-letter {
+  font-size: 4vw;
+}
+.details {
+  width: 110%;
+}
+.details > * {
+  padding: calc(1vw + 5px);
+  width: 100%;
+  border-top: solid var(--b) 1px;
+}
+.details > *:last-child {
+  border-bottom: solid var(--b) 1px;
+}
+.learn-more {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  border-radius: 5px;
+  color: white !important;
+  text-decoration: none;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+.plan-card:nth-child(2) .learn-more {
+  background: white;
+  color: hsl(237, 63%, 64%) !important;
+}
+.plan-card:nth-child(2) .learn-more:hover {
+  border: solid 1px white;
+  color: white !important;
+  background: transparent;
+}
+.learn-more:hover {
+  border: solid 1px hsl(237, 63%, 64%);
+  color: hsl(237, 63%, 64%) !important;
+  background: transparent;
+}
+.switcher {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  color: hsl(234, 14%, 74%);
+  align-items: center;
+}
+.switcher input {
+  display: none;
+}
+.switcher label {
+  display: flex;
+  flex-direction: row;
+  background-color: hsl(237, 63%, 64%);
+  padding: 4px;
+  width: 55px;
+  border-radius: 16px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.switcher input:checked ~ label span {
+  margin-left: 22px;
+}
+.switcher label:hover {
+  background-color: hsl(236, 72%, 79%);
+}
+.switcher label span {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+@media (max-width: 700px) {
+  .wrapper {
+    padding: 5vh calc(10vw + 50px);
+  }
+  .plans-wrapper {
+    flex-direction: column;
+    gap: 25px;
+    perspective: 3000px;
+  }
+  .plan-card,
+  .plan-card:nth-child(2) {
+    padding: 40px;
+    gap: 30px;
+    width: 100%;
+    border-radius: 10px !important;
+  }
+  .plan-price {
+    font-size: 70px;
+  }
+  .plan-title {
+    font-size: 20px;
+  }
+  .plan-price::first-letter {
+    font-size: 50px;
+  }
+  .details {
+    width: 90%;
+  }
+  .details > * {
+    padding: 20px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 700px) {
+  .wrapper {
+    padding: 5vh 5vw;
+  }
+}
